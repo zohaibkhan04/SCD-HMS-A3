@@ -10,4 +10,5 @@ package com.mycompany.doctorpatiensystem;
  */
 public class PatientDAO {
     
+    
 }

@@ -57,8 +57,6 @@ public class ServicesInfo extends javax.swing.JFrame {
 
         jLabel5.setText("Service Charges");
 
-        jTextField1.setText("jTextField1");
-
         jTextField2.setText("jTextField2");
 
         jTextField3.setText("jTextField3");
