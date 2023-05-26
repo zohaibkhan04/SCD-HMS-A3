@@ -75,10 +75,25 @@ public class patient_page extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 255, 153));
 
         add.setText("ADD PATIENTS");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         admit.setText("ADMIT PATIENT");
+        admit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admitActionPerformed(evt);
+            }
+        });
 
         update.setText("UPDATE/DELETE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -119,7 +134,26 @@ public class patient_page extends javax.swing.JFrame {
         // TODO add your handling code here:
         ServicesInfo info=new ServicesInfo();
         info.setVisible(true);
+        
     }//GEN-LAST:event_servicesActionPerformed
+
+    private void admitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admitActionPerformed
+        // TODO add your handling code here:
+        PatientAdmitInfo admit=new PatientAdmitInfo();
+        admit.setVisible(true);
+    }//GEN-LAST:event_admitActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+        PatienDetails addpatient=new PatienDetails();
+        addpatient.setVisible(true);
+    }//GEN-LAST:event_addActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+        PatientUpdateDelete upd=new PatientUpdateDelete();
+        upd.setVisible(true);
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments

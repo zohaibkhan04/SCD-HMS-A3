@@ -32,6 +32,7 @@ public class home extends javax.swing.JFrame {
         docters = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         services = new javax.swing.JButton();
+        sign_out = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -66,6 +67,15 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        sign_out.setBackground(new java.awt.Color(0, 204, 0));
+        sign_out.setForeground(new java.awt.Color(0, 0, 0));
+        sign_out.setText("Sign out");
+        sign_out.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sign_outActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,6 +89,10 @@ public class home extends javax.swing.JFrame {
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(patients, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(sign_out)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +108,9 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(services, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(sign_out)
+                .addGap(50, 50, 50))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 440));
@@ -158,6 +174,12 @@ public class home extends javax.swing.JFrame {
         info.setVisible(true);
     }//GEN-LAST:event_servicesActionPerformed
 
+    private void sign_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_outActionPerformed
+        // TODO add your handling code here:
+        Login sign=new Login();
+        sign.setVisible(true);
+    }//GEN-LAST:event_sign_outActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,5 +225,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton patients;
     private javax.swing.JButton services;
+    private javax.swing.JButton sign_out;
     // End of variables declaration//GEN-END:variables
 }
