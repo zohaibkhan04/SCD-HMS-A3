@@ -46,6 +46,11 @@ public class home extends javax.swing.JFrame {
         patients.setBackground(new java.awt.Color(4, 249, 109));
         patients.setForeground(new java.awt.Color(0, 0, 0));
         patients.setText("Patient");
+        patients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientsActionPerformed(evt);
+            }
+        });
 
         docters.setBackground(new java.awt.Color(4, 249, 109));
         docters.setForeground(new java.awt.Color(0, 0, 0));
@@ -179,6 +184,13 @@ public class home extends javax.swing.JFrame {
         Login sign=new Login();
         sign.setVisible(true);
     }//GEN-LAST:event_sign_outActionPerformed
+
+    private void patientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsActionPerformed
+        // TODO add your handling code here:
+        patient_page p=new patient_page();
+        p.setVisible(true);
+        
+    }//GEN-LAST:event_patientsActionPerformed
 
     /**
      * @param args the command line arguments
