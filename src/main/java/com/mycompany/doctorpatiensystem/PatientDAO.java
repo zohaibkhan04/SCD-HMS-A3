@@ -32,18 +32,18 @@ public class PatientDAO implements PatientDaoInterface {
         }
         try {
             String query = "INSERT INTO patients (patient_id, name, father_name, emailID, contact, address, gender, blood_group, age, info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareCall(query);
-            stmt.setInt(1, patient.getPatient_id());
-            stmt.setString(2, patient.getName());
-            stmt.setString(3, patient.getFather_name());
-            stmt.setString(4, patient.getEmailID());
-            stmt.setInt(5, patient.getContact());
-            stmt.setString(6, patient.getAddress());
-            stmt.setString(7, patient.getGender());
-            stmt.setString(8, patient.getBlood_group());
-            stmt.setString(9, patient.getAge());
-            stmt.setString(10, patient.getInfo());
-            stmt.executeUpdate();
+            PreparedStatement insert = conn.prepareCall(query);
+            insert.setInt(1, patient.getPatient_id());
+            insert.setString(2, patient.getName());
+            insert.setString(3, patient.getFather_name());
+            insert.setString(4, patient.getEmailID());
+            insert.setInt(5, patient.getContact());
+            insert.setString(6, patient.getAddress());
+            insert.setString(7, patient.getGender());
+            insert.setString(8, patient.getBlood_group());
+            insert.setString(9, patient.getAge());
+            insert.setString(10, patient.getInfo());
+            insert.executeUpdate();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -155,18 +155,18 @@ public class PatientDAO implements PatientDaoInterface {
         }
         try {
             String query = "UPDATE patients SET name = ?, father_name = ?, emailID = ?, contact = ?, address = ?, gender = ?, blood_group = ?, age = ?, info = ? WHERE patient_id = ?";
-            PreparedStatement stmt = conn.prepareCall(query);
-            stmt.setString(1, patient.getName());
-            stmt.setString(2, patient.getFather_name());
-            stmt.setString(3, patient.getEmailID());
-            stmt.setInt(4, patient.getContact());
-            stmt.setString(5, patient.getAddress());
-            stmt.setString(6, patient.getGender());
-            stmt.setString(7, patient.getBlood_group());
-            stmt.setString(8, patient.getAge());
-            stmt.setString(9, patient.getInfo());
-            stmt.setInt(10, patientId);
-            stmt.executeUpdate();
+            PreparedStatement insert = conn.prepareCall(query);
+            insert.setString(1, patient.getName());
+            insert.setString(2, patient.getFather_name());
+            insert.setString(3, patient.getEmailID());
+            insert.setInt(4, patient.getContact());
+            insert.setString(5, patient.getAddress());
+            insert.setString(6, patient.getGender());
+            insert.setString(7, patient.getBlood_group());
+            insert.setString(8, patient.getAge());
+            insert.setString(9, patient.getInfo());
+            insert.setInt(10, patientId);
+            insert.executeUpdate();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -182,9 +182,9 @@ public class PatientDAO implements PatientDaoInterface {
         }
         try {
             String query = "DELETE FROM patients WHERE patient_id = ?";
-            PreparedStatement stmt = conn.prepareCall(query);
-            stmt.setInt(1, patientId);
-            stmt.executeUpdate();
+            PreparedStatement insert = conn.prepareCall(query);
+            insert.setInt(1, patientId);
+            insert.executeUpdate();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
