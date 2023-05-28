@@ -18,7 +18,8 @@ class Services {
     private String name;
     private String date;
     private int charges;
-
+    private int pat_id;
+    private String pat_name;
     public Services(String name, String date, int charges) {
         this.name = name;
         this.date = date;
@@ -48,6 +49,30 @@ class Services {
     public void setCharges(int charges) {
         this.charges = charges;
     }
+
+    public int getPat_id() {
+        return pat_id;
+    }
+
+    public void setPat_id(int pat_id) {
+        this.pat_id = pat_id;
+    }
+
+    public String getPat_name() {
+        return pat_name;
+    }
+
+    public void setPat_name(String pat_name) {
+        this.pat_name = pat_name;
+    }
+
+    public Services(String name, String date, int charges, int pat_id, String pat_name) {
+        this.name = name;
+        this.date = date;
+        this.charges = charges;
+        this.pat_id = pat_id;
+        this.pat_name = pat_name;
+    }
 }
 
 
@@ -70,11 +95,13 @@ public class ServicesDAO implements ServicesDaoInterface {
             return;
         }
         try {
-            String query = "INSERT INTO services (name, date, charges) VALUES (?, ?, ?)";
-            PreparedStatement insert = conn.prepareStatement(query);
-            insert.setString(1, service.getName());
-            insert.setString(2, service.getDate());
-            insert.setInt(3, service.getCharges());
+           String query = "INSERT INTO services (name, date, charges, patient_id, patient_name) VALUES (?, ?, ?, ?, ?)";
+PreparedStatement insert = conn.prepareStatement(query);
+insert.setString(1, service.getName());
+insert.setString(2, service.getDate());
+insert.setInt(3, service.getCharges());
+insert.setInt(4, service.getPat_id());
+insert.setString(5, service.getPat_name());
             insert.executeUpdate();
             conn.close();
         } catch (SQLException e) {

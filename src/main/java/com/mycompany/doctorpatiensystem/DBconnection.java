@@ -77,9 +77,9 @@ public class DBconnection {
             String createServicesTable = "CREATE TABLE IF NOT EXISTS services ("
                     + "name VARCHAR(255) NOT NULL,"
                     + "date VARCHAR(255) NOT NULL,"
-                    + "charges INT NOT NULL"
+                    + "charges INT NOT NULL,"
                     + "patient_id INT NOT NULL,"
-                    + "patient_name VARCHAR(255) NOT NULL,"
+                    + "patient_name VARCHAR(255) NOT NULL"
                     + ")";
             statement.executeUpdate(createServicesTable);
             conn.close();

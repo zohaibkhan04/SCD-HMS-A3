@@ -57,9 +57,22 @@ public class ServicesInfo extends javax.swing.JFrame {
 
         jLabel5.setText("Service Charges");
 
+        srv_date.setText(".");
+
+        pat_id.setText(".");
+
+        pat_name.setText(".");
+
+        srv_charges.setText(".");
+
         jLabel6.setText("YYYY.MM.DD");
 
         get_data.setText("GetData");
+        get_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                get_dataActionPerformed(evt);
+            }
+        });
 
         new_srv.setText("New");
         new_srv.addActionListener(new java.awt.event.ActionListener() {
@@ -69,10 +82,25 @@ public class ServicesInfo extends javax.swing.JFrame {
         });
 
         save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
 
         delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,22 +204,64 @@ public class ServicesInfo extends javax.swing.JFrame {
     private void new_srvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_srvActionPerformed
         // TODO add your handling code here:
         
-    // Get the values from the input fields
-    String serviceName = srv_name.getText();
+     srv_name.setText("");
+      srv_date.setText("");
+       srv_charges.setText("");
+        pat_name.setText("");
+         pat_id.setText("");
+   
+
+    }//GEN-LAST:event_new_srvActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+ String serviceName = srv_name.getText();
     String serviceDate = srv_date.getText();
     int serviceCharges = Integer.parseInt(srv_charges.getText());
     int patientId = Integer.parseInt(pat_id.getText());
+    String patientName=pat_name.getText();
     
-    // Create a new instance of the services class
-    Services service = new Services(serviceName, serviceDate, serviceCharges,);
+    Services service = new Services(serviceName, serviceDate, serviceCharges,patientId,patientName);
 
-    // Create an instance of the ServiceDAO class
-    ServiceDAO serviceDAO = new ServiceDAO();
+   
+    ServicesDAO serviceDAO = new ServicesDAO();
+    serviceDAO.create(service);        
+    }//GEN-LAST:event_saveActionPerformed
 
-    // Call the create method to insert the service into the database
-    serviceDAO.create(service);
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+         String name=srv_name.getText();
+        ServicesDAO del_srv=new ServicesDAO();
+        del_srv.delete(name);
+    }//GEN-LAST:event_deleteActionPerformed
 
-    }//GEN-LAST:event_new_srvActionPerformed
+    private void get_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_get_dataActionPerformed
+        // TODO add your handling code here:
+       String name=srv_name.getText();
+        ServicesDAO get_srv=new ServicesDAO();
+       Services get= get_srv.read(name);
+//        srv_name.setText(get.getName());
+    
+        srv_date.setText(get.getDate());
+        srv_charges.setText(String.valueOf(get.getCharges()));
+        pat_id.setText(String.valueOf(get.getPat_id()));
+        pat_name.setText(get.getPat_name());
+        
+    }//GEN-LAST:event_get_dataActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+          
+          
+        String serviceName = srv_name.getText();
+    String serviceDate = srv_date.getText();
+    int serviceCharges = Integer.parseInt(srv_charges.getText());
+    int patientId = Integer.parseInt(pat_id.getText());
+    String patientName=pat_name.getText();
+     
+        Services service=new Services(serviceName,serviceDate,serviceCharges,  patientId,patientName);
+        ServicesDAO upd_srv=new ServicesDAO();
+        upd_srv.update(serviceName, service);
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
