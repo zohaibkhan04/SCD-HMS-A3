@@ -4,7 +4,9 @@
  */
 package com.mycompany.doctorpatiensystem;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -55,7 +57,7 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        patientTable = new javax.swing.JTable();
         RoomNO = new javax.swing.JTextField();
         get_patient = new javax.swing.JButton();
         get_doc = new javax.swing.JButton();
@@ -119,6 +121,11 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
         });
 
         update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         get_data.setText("GetData");
         get_data.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +147,7 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        patientTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -151,7 +158,7 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
                 "Patient ID", "Patient Name", "Gender", "Blood Group"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(patientTable);
 
         get_patient.setText("Get Patient");
         get_patient.addActionListener(new java.awt.event.ActionListener() {
@@ -380,7 +387,7 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
         int id=Integer.parseInt(DocID.getText());
         DocterDAO get_doc=new DocterDAO();
        doctor get= get_doc.read(id);
-        DocID.setText(get.getName());
+        Doc_Name.setText(get.getName());
     }//GEN-LAST:event_get_docActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -389,6 +396,50 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
         PatientAdmissionDAO del_adm=new PatientAdmissionDAO();
         del_adm.delete(id);
     }//GEN-LAST:event_deleteActionPerformed
+// Assuming you have a JTable instance called "patientTable"
+
+private void showPatientDetails() {
+    DefaultTableModel model = (DefaultTableModel) patientTable.getModel();
+    model.setRowCount(0); // Clear existing table data
+
+    PatientAdmissionDAO admissionDAO = new PatientAdmissionDAO();
+    List<PatientAdmission> admissions = admissionDAO.getAllPatientAdmissions();
+
+    for (PatientAdmission admission : admissions) {
+        int admissionID = admission.getPatientID();
+        String name = admission.getName();
+        int doctorID = admission.getDocID();
+        String doctorName = admission.getDocName();
+        String disease = admission.getDisease();
+        String gender = admission.getGender();
+        String remarks = admission.getRemarks();
+        String bloodGroup = admission.getBloodGroup();
+        String admissionDate = admission.getAdmissionDate();
+        int roomNo = admission.getRoomNo();
+
+        Object[] rowData = { admissionID, name, doctorID, doctorName, disease, gender, remarks, bloodGroup, admissionDate, roomNo };
+        model.addRow(rowData);
+    }
+}
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+         int ID = Integer.parseInt(patientID.getText());
+    String name = patientName.getText();
+    int docID = Integer.parseInt(DocID.getText());
+    String docName = Doc_Name.getText();
+    String disease = Disease.getText();
+    String gender = patientGender.getText();
+    String remark = remarks.getText();
+    String bloodGroup = BloodGroup.getText();
+    String admissionDate = Admitdate.getText();
+    int roomNo = Integer.parseInt(RoomNO.getText());
+     PatientAdmission admission = new PatientAdmission(ID, name, docID, docName, disease, gender, remark, bloodGroup, admissionDate, roomNo);
+
+    PatientAdmissionDAO admissionDAO = new PatientAdmissionDAO();
+    admissionDAO.update(ID, admission);
+        
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,10 +500,10 @@ public class PatientAdmitInfo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField patientGender;
     private javax.swing.JTextField patientID;
     private javax.swing.JTextField patientName;
+    private javax.swing.JTable patientTable;
     private javax.swing.JTextField remarks;
     private javax.swing.JButton reset;
     private javax.swing.JButton save;
