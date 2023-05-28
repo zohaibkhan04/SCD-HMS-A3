@@ -39,7 +39,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="room_charges" min="-2" max="-2" attributes="0"/>
+                              <Component id="room_charges" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="update" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -58,7 +58,7 @@
                                       <Component id="save" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="room_no" min="-2" max="-2" attributes="0"/>
+                                      <Component id="room_no" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="reset" min="-2" max="-2" attributes="0"/>
                                   </Group>

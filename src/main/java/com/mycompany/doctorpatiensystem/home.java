@@ -31,8 +31,9 @@ public class home extends javax.swing.JFrame {
         patients = new javax.swing.JButton();
         docters = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        services = new javax.swing.JButton();
+        rooms = new javax.swing.JButton();
         sign_out = new javax.swing.JButton();
+        services1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -63,12 +64,12 @@ public class home extends javax.swing.JFrame {
 
         jButton5.setText("Rooms");
 
-        services.setBackground(new java.awt.Color(4, 249, 109));
-        services.setForeground(new java.awt.Color(0, 0, 0));
-        services.setText("Services");
-        services.addActionListener(new java.awt.event.ActionListener() {
+        rooms.setBackground(new java.awt.Color(4, 249, 109));
+        rooms.setForeground(new java.awt.Color(0, 0, 0));
+        rooms.setText("Rooms");
+        rooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                servicesActionPerformed(evt);
+                roomsActionPerformed(evt);
             }
         });
 
@@ -81,6 +82,15 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        services1.setBackground(new java.awt.Color(4, 249, 109));
+        services1.setForeground(new java.awt.Color(0, 0, 0));
+        services1.setText("Services");
+        services1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                services1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,10 +99,11 @@ public class home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(docters, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(services, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(services1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(patients, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patients, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rooms, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -106,14 +117,13 @@ public class home extends javax.swing.JFrame {
                 .addComponent(docters, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(patients, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(services, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(services1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(rooms, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(sign_out)
                 .addGap(50, 50, 50))
         );
@@ -173,11 +183,11 @@ public class home extends javax.swing.JFrame {
         newDetails.setVisible(true);
     }//GEN-LAST:event_doctersActionPerformed
 
-    private void servicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesActionPerformed
+    private void roomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomsActionPerformed
         // TODO add your handling code here:
-        ServicesInfo info=new ServicesInfo();
+        RoomInfo info=new RoomInfo();
         info.setVisible(true);
-    }//GEN-LAST:event_servicesActionPerformed
+    }//GEN-LAST:event_roomsActionPerformed
 
     private void sign_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_outActionPerformed
         // TODO add your handling code here:
@@ -191,6 +201,12 @@ public class home extends javax.swing.JFrame {
         p.setVisible(true);
         
     }//GEN-LAST:event_patientsActionPerformed
+
+    private void services1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_services1ActionPerformed
+        // TODO add your handling code here:
+        ServicesInfo srv=new ServicesInfo();
+        srv.setVisible(true);
+    }//GEN-LAST:event_services1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,7 +252,8 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton patients;
-    private javax.swing.JButton services;
+    private javax.swing.JButton rooms;
+    private javax.swing.JButton services1;
     private javax.swing.JButton sign_out;
     // End of variables declaration//GEN-END:variables
 }
