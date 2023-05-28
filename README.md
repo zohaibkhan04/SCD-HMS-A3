@@ -1,0 +1,2 @@
+# SCD-HMS-A3
+Nearly everyone in today's internet-driven society uses web-based apps for a variety of jobs, big or little. Professionals in Java application development take into account many different use-cases, but the Doctor Patient System stands out as a particularly well-liked option. I have designed suitable and engaging Graphical User Interfaces for the system in this repository, and I've also used MySQL as the database. employing the Data Access Object (DAO) paradigm.
