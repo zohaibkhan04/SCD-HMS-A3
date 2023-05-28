@@ -182,9 +182,9 @@ public class PatientDAO implements PatientDaoInterface {
         }
         try {
             String query = "DELETE FROM patients WHERE patient_id = ?";
-            PreparedStatement insert = conn.prepareCall(query);
-            insert.setInt(1, patientId);
-            insert.executeUpdate();
+            PreparedStatement delete = conn.prepareCall(query);
+            delete.setInt(1, patientId);
+            delete.executeUpdate();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);

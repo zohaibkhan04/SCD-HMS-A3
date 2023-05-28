@@ -179,11 +179,11 @@ public class ServicesInfo extends javax.swing.JFrame {
     // Get the values from the input fields
     String serviceName = srv_name.getText();
     String serviceDate = srv_date.getText();
-    int serviceCharges = Integer.parseInt(service_charges.getText());
-    int patientId = Integer.parseInt(patient_id.getText());
-
+    int serviceCharges = Integer.parseInt(srv_charges.getText());
+    int patientId = Integer.parseInt(pat_id.getText());
+    
     // Create a new instance of the services class
-    services service = new services(serviceName, serviceDate, serviceCharges, patientId);
+    Services service = new Services(serviceName, serviceDate, serviceCharges,);
 
     // Create an instance of the ServiceDAO class
     ServiceDAO serviceDAO = new ServiceDAO();

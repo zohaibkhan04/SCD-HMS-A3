@@ -39,7 +39,7 @@ public class DBconnection {
 
         try {
             Statement statement = conn.createStatement();
-            String createdocterTable = "CREATE TABLE IF NOT EXISTS docters ("
+            String createdocterTable = "CREATE TABLE IF NOT EXISTS doctors ("
                     + "id INT  PRIMARY KEY,"
                     + "name VARCHAR(255) NOT NULL,"
                     + "father_name VARCHAR(255) NOT NULL,"
@@ -78,7 +78,8 @@ public class DBconnection {
                     + "name VARCHAR(255) NOT NULL,"
                     + "date VARCHAR(255) NOT NULL,"
                     + "charges INT NOT NULL"
-//                    + "CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (patient_id)"
+                    + "patient_id INT NOT NULL,"
+                    + "patient_name VARCHAR(255) NOT NULL,"
                     + ")";
             statement.executeUpdate(createServicesTable);
             conn.close();
