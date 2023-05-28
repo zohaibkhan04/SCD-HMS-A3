@@ -9,9 +9,17 @@ package com.mycompany.doctorpatiensystem;
  * @author Zohaib khan
  */
 public class docter {
-     private String id;
-
-    public docter(String id, String name, String SO, String email, String contact, String address, String qual, String gender, String bld_grp, String joining) {
+     private int id;
+     private String name;
+     private String SO;
+     private String email;
+     private int contact;
+     private String address;
+     private String qual;
+     private String gender;
+     private String bld_grp;
+     private String joining;
+ public docter(int id, String name, String SO, String email, int contact, String address, String qual, String gender, String bld_grp, String joining) {
         this.id = id;
         this.name = name;
         this.SO = SO;
@@ -23,21 +31,11 @@ public class docter {
         this.bld_grp = bld_grp;
         this.joining = joining;
     }
-     private String name;
-     private String SO;
-     private String email;
-     private String contact;
-     private String address;
-     private String qual;
-     private String gender;
-     private String bld_grp;
-     private String joining;
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,11 +63,11 @@ public class docter {
         this.email = email;
     }
 
-    public String getContact() {
+    public int getContact() {
         return contact;
     }
 
-    public void setContact(String contact) {
+    public void setContact(int contact) {
         this.contact = contact;
     }
 

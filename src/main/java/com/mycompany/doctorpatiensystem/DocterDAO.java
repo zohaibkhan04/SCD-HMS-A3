@@ -12,7 +12,8 @@ import java.awt.List;
 import java.sql.*;
 import java.sql.SQLException;
 import java.sql.Connection;
-interface DocterInterface{
+interface DocterInterface
+{
 public abstract void add(String id,String name,String SO,String email,String contact,String address,String qual,String gender,String bld_grp,String joining);
 public abstract int read(String userId);
 public abstract List<docter> getAllUsers();
@@ -75,29 +76,41 @@ public class DocterDAO {
             e.printStackTrace();
         }
 
-        return details;
+        return doc_data;
     }
 
-    @Override
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        Connection conn = Database.connect();
+    /**
+     *
+     * @return
+     */
+    
+    public List<docter> getAlldocters() {
+        List<docter> docter = new ArrayList<>();
+        Connection connect = DBconnection.connect();
 
-        if (conn == null) {
-            System.out.println("Couldn't establish connection");
-            return users;
+        if (connect == null) {
+            System.out.println("Connection Failed");
+            return docter;
         }
 
-        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM users");
+        try (PreparedStatement statement = connect.prepareStatement("SELECT * FROM docters");
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String username = resultSet.getString("username");
+               
                 String name = resultSet.getString("name");
+                String SO = resultSet.getString("father_name");
+                String email = resultSet.getString("emailID");
+                int contact = resultSet.getInt("contact");
+                String address = resultSet.getString("address");
+                String qual = resultSet.getString("Qualification");
+                String gender = resultSet.getString("gender");
+                String bld_grp = resultSet.getString("blood_group");
+                String joining = resultSet.getString("joiningDate");
 
-                User user = new User(id, username, name);
-                users.add(user);
+                docter doc = new docter(id, name, SO, email, contact, address, qual, gender, bld_grp, joining);
+                doc.add(doc);
             }
         } catch (SQLException e) {
             e.printStackTrace();
