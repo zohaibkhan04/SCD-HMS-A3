@@ -309,21 +309,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="new_data">
       <Properties>
         <Property name="text" type="java.lang.String" value="New"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="new_dataActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="getDocdata">
       <Properties>
         <Property name="text" type="java.lang.String" value="Get Data"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getDocdataActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Canvas" name="canvas1">
     </Component>

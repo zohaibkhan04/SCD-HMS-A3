@@ -12,26 +12,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DBconnection {
-    private static final String hostname = "localhost";
-    private static final int port = 3306;
-    private static final String database = "HMS";
-    private static final String username = "root";
-    private static final String password = "";
+  
     
-    public static Connection connect() {
-        try {
-            String uri = String.format("jdbc:mysql://%s:%d/%s", hostname, port, database);
-            return DriverManager.getConnection(uri, username, password);
+    public static Connection connect()  {
+       try {
+            
+            String url = "jdbc:mysql://localhost:3306/hms";
+            return DriverManager.getConnection(url, "root", "");
         } catch (SQLException e) {
            System.out.format("An error occurred: %s\n", e.getMessage());
-        }
+         
 
         return null;
     }
-    
-    public static void initialize() {
+    }
+    public DBconnection() {
         Connection conn = DBconnection.connect();
         if (conn == null) {
             System.out.println("Connection Failed");
@@ -64,7 +63,7 @@ public class DBconnection {
                     + "address VARCHAR(255) NOT NULL,"
                     + "gender VARCHAR(255) NOT NULL,"
                     + "blood_group VARCHAR(255) NOT NULL,"
-                    +"age VARCHAR(255) NOT NULL,"
+                    +"age int NOT NULL,"
                     + "info VARCHAR(255) NOT NULL"
                     + ")";
             statement.executeUpdate(createPatientTable);
@@ -78,8 +77,8 @@ public class DBconnection {
             String createServicesTable = "CREATE TABLE IF NOT EXISTS services ("
                     + "name VARCHAR(255) NOT NULL,"
                     + "date VARCHAR(255) NOT NULL,"
-                    + "charges INT NOT NULL,"
-                    + "CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (patient_id)"
+                    + "charges INT NOT NULL"
+//                    + "CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patients (patient_id)"
                     + ")";
             statement.executeUpdate(createServicesTable);
             conn.close();

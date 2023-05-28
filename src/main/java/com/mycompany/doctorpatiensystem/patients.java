@@ -17,10 +17,10 @@ int contact;
 String address;
 String gender;
 String blood_group;
-String age;
+int age;
 String info;
 
-    public patients(int patient_id, String name, String father_name, String emailID, int contact, String address, String gender, String blood_group, String age, String info) {
+    public patients(int patient_id, String name, String father_name, String emailID, int contact, String address, String gender, String blood_group, int age, String info) {
         this.patient_id = patient_id;
         this.name = name;
         this.father_name = father_name;
@@ -97,11 +97,11 @@ String info;
         this.blood_group = blood_group;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

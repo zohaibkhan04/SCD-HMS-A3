@@ -12,6 +12,8 @@ public class DoctorPatienSystem {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        DBconnection db=new DBconnection();
+        
         Login login=new Login();
         login.setVisible(true);
     }

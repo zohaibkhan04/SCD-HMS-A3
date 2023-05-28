@@ -41,7 +41,7 @@ public class PatientDAO implements PatientDaoInterface {
             insert.setString(6, patient.getAddress());
             insert.setString(7, patient.getGender());
             insert.setString(8, patient.getBlood_group());
-            insert.setString(9, patient.getAge());
+            insert.setInt(9, patient.getAge());
             insert.setString(10, patient.getInfo());
             insert.executeUpdate();
             conn.close();
@@ -98,7 +98,7 @@ public class PatientDAO implements PatientDaoInterface {
                     String address = resultSet.getString("address");
                     String gender = resultSet.getString("gender");
                     String blood_group = resultSet.getString("blood_group");
-                    String age = resultSet.getString("age");
+                    int age = resultSet.getInt("age");
                     String info = resultSet.getString("info");
 
                     patient = new patients(id, name, father_name, emailID, contact, address, gender, blood_group, age, info);
@@ -133,7 +133,7 @@ public class PatientDAO implements PatientDaoInterface {
                 String address = resultSet.getString("address");
                 String gender = resultSet.getString("gender");
                 String blood_group = resultSet.getString("blood_group");
-                String age = resultSet.getString("age");
+                int age = resultSet.getInt("age");
                 String info = resultSet.getString("info");
 
                 patients patient = new patients(id, name, father_name, emailID, contact, address, gender, blood_group, age, info);
@@ -163,7 +163,7 @@ public class PatientDAO implements PatientDaoInterface {
             insert.setString(5, patient.getAddress());
             insert.setString(6, patient.getGender());
             insert.setString(7, patient.getBlood_group());
-            insert.setString(8, patient.getAge());
+            insert.setInt(8, patient.getAge());
             insert.setString(9, patient.getInfo());
             insert.setInt(10, patientId);
             insert.executeUpdate();

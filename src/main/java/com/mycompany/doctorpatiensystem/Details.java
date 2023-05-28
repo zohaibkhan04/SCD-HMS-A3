@@ -110,12 +110,32 @@ public class Details extends javax.swing.JFrame {
         });
 
         update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         new_data.setText("New");
+        new_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new_dataActionPerformed(evt);
+            }
+        });
 
         getDocdata.setText("Get Data");
+        getDocdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getDocdataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,6 +289,59 @@ public class Details extends javax.swing.JFrame {
         doctor doc=new doctor(id,name,fatherName,email,contact,address,qual,gender,bloodGroup,joiningDate);
         add_doc.create(doc);
     }//GEN-LAST:event_saveActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+         int id = Integer.parseInt(doc_id.getText());
+        String name = doc_name.getText();
+        String fatherName = doc_father.getText();
+        String email = doc_email.getText();
+        int contact = Integer.parseInt(doc_contact.getText());
+        String address = doc_address.getText();
+        String qual = doc_qualifiaction.getText();
+        String gender = (String) docter_gender.getSelectedItem();
+        String bloodGroup = (String) doc_bldgrp.getSelectedItem();
+        String joiningDate = doc_joining.getText();
+     
+        DocterDAO add_doc=new DocterDAO();
+        doctor doc=new doctor(id,name,fatherName,email,contact,address,qual,gender,bloodGroup,joiningDate);
+        add_doc.update(id, doc);
+        
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void new_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_dataActionPerformed
+        // TODO add your handling code here:
+        doc_name.setText(" ");
+        doc_id.setText(" ");
+        doc_father.setText(" ");
+        doc_email.setText(" ");
+        doc_contact.setText(" ");
+        doc_address.setText(" ");
+        doc_qualifiaction.setText(" ");
+        doc_joining.setText(" ");
+    }//GEN-LAST:event_new_dataActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        int id=Integer.parseInt(doc_id.getText());
+        DocterDAO del_doc=new DocterDAO();
+        del_doc.delete(id);
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void getDocdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getDocdataActionPerformed
+        // TODO add your handling code here:
+         int id=Integer.parseInt(doc_id.getText());
+        DocterDAO get_doc=new DocterDAO();
+       doctor get= get_doc.read(id);
+        doc_name.setText(get.getName());
+    
+        doc_father.setText(get.getFather_name());
+        doc_email.setText(get.getEmailID());
+        doc_contact.setText(String.valueOf(get.getContact()));
+        doc_address.setText(get.getAddress());
+         doc_qualifiaction.setText(get.getQualification());
+         doc_joining.setText(String.valueOf(get.getJoiningDate()));
+    }//GEN-LAST:event_getDocdataActionPerformed
 
     /**
      * @param args the command line arguments
