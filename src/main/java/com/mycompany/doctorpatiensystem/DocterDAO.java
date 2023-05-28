@@ -8,13 +8,14 @@ package com.mycompany.doctorpatiensystem;
  *
  * @author Zohaib khan
  */
+import java.awt.List;
 import java.sql.*;
 import java.sql.SQLException;
 import java.sql.Connection;
 interface DocterInterface{
 public abstract void add(String id,String name,String SO,String email,String contact,String address,String qual,String gender,String bld_grp,String joining);
 public abstract int read(String userId);
-
+public abstract List<docter> getAllUsers();
 }
 
 public class DocterDAO {
@@ -28,18 +29,18 @@ public class DocterDAO {
         }
         try{
         String insert="INSERT INTO docters(id, name, father_name, emailID, contact, address, Qualification, gender, blood_group, joiningDate) VALUES(?,?,?,?,?,?,?,?,?)";
-   PreparedStatement stmt = connect.prepareCall(insert);
-           stmt.setString(1, id);
-           stmt.setString(2, name);
-           stmt.setString(3, SO);
-           stmt.setString(1, email);
-           stmt.setString(2, contact);
-           stmt.setString(3, address);
-           stmt.setString(1, qual);
-           stmt.setString(2, gender);
-           stmt.setString(3, bld_grp);
-           stmt.setString(3, joining);
-           stmt.executeUpdate();
+   PreparedStatement query = connect.prepareCall(insert);
+           query.setString(1, id);
+           query.setString(2, name);
+           query.setString(3, SO);
+           query.setString(1, email);
+           query.setString(2, contact);
+           query.setString(3, address);
+           query.setString(1, qual);
+           query.setString(2, gender);
+           query.setString(3, bld_grp);
+           query.setString(3, joining);
+           query.executeUpdate();
            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -51,7 +52,7 @@ public class DocterDAO {
   
 
 
-    public String[] read(String username) {
+    public String[] read(String userid) {
         String[] doc_data = new String[3];
         Connection conn = DBconnection.connect();
 
@@ -60,14 +61,14 @@ public class DocterDAO {
             return doc_data;
         }
 
-        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM users WHERE username = ?")) {
-            statement.setString(1, username);
+        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM docters WHERE id = ?")) {
+            statement.setString(1, userid);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    details[0] = resultSet.getString("username");
-                    details[1] = resultSet.getString("password");
-                    details[2] = String.valueOf(resultSet.getInt("id"));
+                    doc_data[0] = resultSet.getString("username");
+                    doc_data[1] = resultSet.getString("password");
+                    doc_data[2] = String.valueOf(resultSet.getInt("id"));
                 }
             }
         } catch (SQLException e) {
@@ -105,29 +106,6 @@ public class DocterDAO {
         return users;
     }
 
-    @Override
-    public String[] read(int userId) {
-        String[] details = new String[2];
-        Connection conn = Database.connect();
-
-        if (conn == null) {
-            System.out.println("Couldn't establish connection");
-            return details;
-        }
-
-        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM users WHERE id = ?")) {
-            statement.setInt(1, userId);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    details[0] = resultSet.getString("username");
-                    details[1] = resultSet.getString("password");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return details;
-    }
+    
+    
 }
