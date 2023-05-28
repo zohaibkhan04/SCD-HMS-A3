@@ -103,6 +103,11 @@ public class Details extends javax.swing.JFrame {
         jLabel11.setText("YYYY.MM.DD");
 
         save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
 
         update.setText("Update");
 
@@ -247,6 +252,23 @@ public class Details extends javax.swing.JFrame {
     private void docter_genderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docter_genderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_docter_genderActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(doc_id.getText());
+        String name = doc_name.getText();
+        String fatherName = doc_father.getText();
+        String email = doc_email.getText();
+        int contact = Integer.parseInt(doc_contact.getText());
+        String address = doc_address.getText();
+        String qual = doc_qualifiaction.getText();
+        String gender = (String) docter_gender.getSelectedItem();
+        String bloodGroup = (String) doc_bldgrp.getSelectedItem();
+        String joiningDate = doc_joining.getText();
+        DocterDAO add_doc=new DocterDAO();
+        doctor doc=new doctor(id,name,fatherName,email,contact,address,qual,gender,bloodGroup,joiningDate);
+        add_doc.create(doc);
+    }//GEN-LAST:event_saveActionPerformed
 
     /**
      * @param args the command line arguments

@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Doctor {
+class doctor {
     private int id;
     private String name;
     private String father_name;
@@ -24,7 +24,7 @@ class Doctor {
     private String blood_group;
     private String joiningDate;
 
-    public Doctor(int id, String name, String father_name, String emailID, int contact, String address, String qualification, String gender, String blood_group, String joiningDate) {
+    public doctor(int id, String name, String father_name, String emailID, int contact, String address, String qualification, String gender, String blood_group, String joiningDate) {
         this.id = id;
         this.name = name;
         this.father_name = father_name;
@@ -119,52 +119,52 @@ class Doctor {
 }
 
 interface DoctorDaoInterface {
-    void create(Doctor doctor);
-    Doctor read(int doctorId);
-    List<Doctor> getAllDoctors();
-    void update(int doctorId, Doctor doctor);
+    void create(doctor doctor);
+    doctor read(int doctorId);
+    List<doctor> getAllDoctors();
+    void update(int doctorId, doctor doctor);
     void delete(int doctorId);
 }
 
-public class DoctorDao implements DoctorDaoInterface {
+public class DocterDAO implements DoctorDaoInterface {
     @Override
-    public void create(Doctor doctor) {
-        Connection conn = DBconnection.connect();
-        if (conn == null) {
+    public void create(doctor doc) {
+        Connection connect = DBconnection.connect();
+        if (connect == null) {
             System.out.println("Couldn't establish connection");
             return;
         }
         try {
             String query = "INSERT INTO doctors (id, name, father_name, emailID, contact, address, Qualification, gender, blood_group, joiningDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareCall(query);
-            stmt.setInt(1, doctor.getId());
-            stmt.setString(2, doctor.getName());
-            stmt.setString(3, doctor.getFather_name());
-            stmt.setString(4, doctor.getEmailID());
-            stmt.setInt(5, doctor.getContact());
-            stmt.setString(6, doctor.getAddress());
-            stmt.setString(7, doctor.getQualification());
-            stmt.setString(8, doctor.getGender());
-            stmt.setString(9, doctor.getBlood_group());
-            stmt.setString(10, doctor.getJoiningDate());
+            PreparedStatement stmt = connect.prepareCall(query);
+            stmt.setInt(1, doc.getId());
+            stmt.setString(2, doc.getName());
+            stmt.setString(3, doc.getFather_name());
+            stmt.setString(4, doc.getEmailID());
+            stmt.setInt(5, doc.getContact());
+            stmt.setString(6, doc.getAddress());
+            stmt.setString(7, doc.getQualification());
+            stmt.setString(8, doc.getGender());
+            stmt.setString(9, doc.getBlood_group());
+            stmt.setString(10, doc.getJoiningDate());
             stmt.executeUpdate();
-            conn.close();
+            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Doctor read(int doctorId) {
-        Doctor doctor = null;
-        Connection conn = DBconnection.connect();
+    public doctor read(int doctorId) {
+        doctor doc = null;
+        Connection connect = DBconnection.connect();
 
-        if (conn == null) {
+        if (connect == null) {
             System.out.println("Couldn't establish connection");
             return null;
         }
 
-        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM doctors WHERE id = ?")) {
+        try (PreparedStatement statement = connect.prepareStatement("SELECT * FROM doctors WHERE id = ?")) {
             statement.setInt(1, doctorId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -180,27 +180,27 @@ public class DoctorDao implements DoctorDaoInterface {
                     String blood_group = resultSet.getString("blood_group");
                     String joiningDate = resultSet.getString("joiningDate");
 
-                    doctor = new Doctor(id, name, father_name, emailID, contact, address, qualification, gender, blood_group, joiningDate);
+                    doc = new doctor(id, name, father_name, emailID, contact, address, qualification, gender, blood_group, joiningDate);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return doctor;
+        return doc;
     }
 
     @Override
-    public List<Doctor> getAllDoctors() {
-        List<Doctor> doctors = new ArrayList<>();
-        Connection conn = DBconnection.connect();
+    public List<doctor> getAllDoctors() {
+        List<doctor> doctors = new ArrayList<>();
+        Connection connect = DBconnection.connect();
 
-        if (conn == null) {
+        if (connect == null) {
             System.out.println("Couldn't establish connection");
             return doctors;
         }
 
-        try (PreparedStatement statement = conn.prepareStatement("SELECT * FROM doctors");
+        try (PreparedStatement statement = connect.prepareStatement("SELECT * FROM doctors");
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
@@ -215,8 +215,8 @@ public class DoctorDao implements DoctorDaoInterface {
                 String blood_group = resultSet.getString("blood_group");
                 String joiningDate = resultSet.getString("joiningDate");
 
-                Doctor doctor = new Doctor(id, name, father_name, emailID, contact, address, qualification, gender, blood_group, joiningDate);
-                doctors.add(doctor);
+                doctor doc = new doctor(id, name, father_name, emailID, contact, address, qualification, gender, blood_group, joiningDate);
+                doctors.add(doc);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -226,15 +226,15 @@ public class DoctorDao implements DoctorDaoInterface {
     }
 
     @Override
-    public void update(int doctorId, Doctor doctor) {
-        Connection conn = DBconnection.connect();
-        if (conn == null) {
+    public void update(int doctorId, doctor doctor) {
+        Connection connect = DBconnection.connect();
+        if (connect == null) {
             System.out.println("Couldn't establish connection");
             return;
         }
         try {
             String query = "UPDATE doctors SET name = ?, father_name = ?, emailID = ?, contact = ?, address = ?, Qualification = ?, gender = ?, blood_group = ?, joiningDate = ? WHERE id = ?";
-            PreparedStatement stmt = conn.prepareCall(query);
+            PreparedStatement stmt = connect.prepareCall(query);
             stmt.setString(1, doctor.getName());
             stmt.setString(2, doctor.getFather_name());
             stmt.setString(3, doctor.getEmailID());
@@ -246,7 +246,7 @@ public class DoctorDao implements DoctorDaoInterface {
             stmt.setString(9, doctor.getJoiningDate());
             stmt.setInt(10, doctorId);
             stmt.executeUpdate();
-            conn.close();
+            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -254,17 +254,17 @@ public class DoctorDao implements DoctorDaoInterface {
 
     @Override
     public void delete(int doctorId) {
-        Connection conn = DBconnection.connect();
-        if (conn == null) {
+        Connection connect = DBconnection.connect();
+        if (connect == null) {
             System.out.println("Couldn't establish connection");
             return;
         }
         try {
             String query = "DELETE FROM doctors WHERE id = ?";
-            PreparedStatement stmt = conn.prepareCall(query);
+            PreparedStatement stmt = connect.prepareCall(query);
             stmt.setInt(1, doctorId);
             stmt.executeUpdate();
-            conn.close();
+            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
