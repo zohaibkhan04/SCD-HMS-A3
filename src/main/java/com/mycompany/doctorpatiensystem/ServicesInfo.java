@@ -43,7 +43,7 @@ public class ServicesInfo extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         update = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pat_data = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,7 +102,7 @@ public class ServicesInfo extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        pat_data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -113,7 +113,16 @@ public class ServicesInfo extends javax.swing.JFrame {
                 "Patient ID", "Patient Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        pat_data.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                pat_dataAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(pat_data);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,6 +272,12 @@ public class ServicesInfo extends javax.swing.JFrame {
         upd_srv.update(serviceName, service);
     }//GEN-LAST:event_updateActionPerformed
 
+    private void pat_dataAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_pat_dataAncestorAdded
+        // TODO add your handling code here:
+        
+
+    }//GEN-LAST:event_pat_dataAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -308,8 +323,8 @@ public class ServicesInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton new_srv;
+    private javax.swing.JTable pat_data;
     private javax.swing.JTextField pat_id;
     private javax.swing.JTextField pat_name;
     private javax.swing.JButton save;
