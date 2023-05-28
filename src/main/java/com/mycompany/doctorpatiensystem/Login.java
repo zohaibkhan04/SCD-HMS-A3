@@ -96,7 +96,7 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         String username=user_name.getText();
-        String user_pass=password.getText();
+        
         String userpass = new String(password.getPassword());
          home homepg=new home();
         

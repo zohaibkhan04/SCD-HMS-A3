@@ -19,7 +19,7 @@ public class DBconnection {
     private static final String database = "HMS";
     private static final String username = "root";
     private static final String password = "";
-
+    
     public static Connection connect() {
         try {
             String uri = String.format("jdbc:mysql://%s:%d/%s", hostname, port, database);
@@ -30,13 +30,13 @@ public class DBconnection {
 
         return null;
     }
-
+    
     public static void initialize() {
         Connection conn = DBconnection.connect();
         if (conn == null) {
             System.out.println("Connection Failed");
             return;
-        }
+}
 
         try {
             Statement statement = conn.createStatement();
