@@ -82,6 +82,20 @@ public class DBconnection {
                     + "patient_name VARCHAR(255) NOT NULL"
                     + ")";
             statement.executeUpdate(createServicesTable);
+            String createPatientAdmissionTable = "CREATE TABLE IF NOT EXISTS patient_admission ("
+        + "patientID INT NOT NULL,"
+        + "name VARCHAR(255) NOT NULL,"
+        + "docID INT NOT NULL,"
+        + "docName VARCHAR(255) NOT NULL,"
+        + "disease VARCHAR(255) NOT NULL,"
+        + "gender VARCHAR(255) NOT NULL,"
+        + "remarks VARCHAR(255) NOT NULL,"
+        + "bloodGroup VARCHAR(255) NOT NULL,"
+        + "admissionDate VARCHAR(255) NOT NULL,"
+        + "roomNo INT NOT NULL"
+        + ")";
+statement.executeUpdate(createPatientAdmissionTable);
+
             conn.close();
         }
         catch (SQLException e) {
